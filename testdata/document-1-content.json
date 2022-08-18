@@ -1,0 +1,19 @@
+{
+  "content": [
+    {
+      "rel": "channel",
+      "uuid": "x"
+    },
+    {
+      "rel": "channel",
+      "uuid": "y"
+    },
+    {
+      "rel": "test",
+      "type": "a"
+    },
+    {
+      "rel": "bosse"
+    }
+  ]
+}

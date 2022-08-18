@@ -1,0 +1,40 @@
+{
+  "links": [
+    {
+      "uri": "imid://application/caas",
+      "type": "x-imid/application",
+      "title": "Naviga CaaS",
+      "rel": "creator",
+      "links": [
+        {
+          "uri": "imid://organisation/navigawirehub",
+          "type": "x-imid/organisation",
+          "title": "Naviga Wire Hub",
+          "rel": "affiliation",
+          "links": [
+            {
+              "uri": "imid://unit/A",
+              "type": "x-imid/unit",
+              "title": "African Press Agency",
+              "rel": "affiliation"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uri": "imid://organisation/navigawirehub",
+      "type": "x-imid/organisation",
+      "title": "Naviga Wire Hub",
+      "rel": "shared-with",
+      "links": [
+        {
+          "uri": "imid://unit/A",
+          "type": "x-imid/unit",
+          "title": "APA ANA FR",
+          "rel": "shared-with"
+        }
+      ]
+    }
+  ]
+}

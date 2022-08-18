@@ -1,0 +1,22 @@
+{
+  "in": "links",
+  "or": [
+    {
+      "and": [
+        {
+          "rel": "channel",
+          "uuid": "x"
+        },
+        {
+          "rel": "subject",
+          "type": "x-im/section",
+          "uuid": "y"
+        }
+      ]
+    },
+    {
+      "rel": "channel",
+      "uuid": "x2"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "links": [
+    {
+      "uuid": "c8a565b3-f042-4cc7-8c61-df48b435fe1b",
+      "type": "x-im/channel",
+      "title": "IOL",
+      "rel": "mainchannel"
+    }
+  ]
+}

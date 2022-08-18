@@ -1,0 +1,22 @@
+{
+  "in": "links",
+  "and": [
+    {
+      "rel": "test",
+      "type": "a"
+    },
+    {
+      "rel": "bosse"
+    }
+  ],
+  "or": [
+    {
+      "rel": "channel",
+      "uuid": "x"
+    },
+    {
+      "rel": "channel",
+      "uuid": "y"
+    }
+  ]
+}

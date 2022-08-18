@@ -1,0 +1,43 @@
+{
+  "in": "links",
+  "and": [
+    {
+      "rel": "creator",
+      "and": [
+        {
+          "in": "links",
+          "rel": "affiliation",
+          "and": [
+            {
+              "in": "links",
+              "or": [
+                {
+                  "uri": "imid://unit/A"
+                },
+                {
+                  "uri": "imid://unit/B"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rel": "shared-with",
+      "and": [
+        {
+          "in": "links",
+          "or": [
+            {
+              "uri": "imid://unit/A"
+            },
+            {
+              "uri": "imid://unit/B"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

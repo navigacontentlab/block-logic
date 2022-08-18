@@ -1,0 +1,8 @@
+{
+  "in": "content",
+  "or": [
+    {
+      "type":"x-im/gallery"
+    }
+  ]
+}
