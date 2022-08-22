@@ -13,7 +13,7 @@
           "rel": "affiliation",
           "links": [
             {
-              "uri": "imid://unit/A",
+              "uri": "imid://unit/D",
               "type": "x-imid/unit",
               "title": "African Press Agency",
               "rel": "affiliation"

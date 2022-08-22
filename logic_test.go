@@ -64,12 +64,12 @@ func Test(t *testing.T) {
 		want      bool
 		document  doc.Document
 	}{
-		//{
-		//	name:      "Test select unit A shared with unit B",
-		//	condition: MustGetConditionFromFile("unit-A-or-B-test-condition.json"),
-		//	document:  MustGetDocumentFromFile("unit-A-shared-B-document.json"),
-		//	want:      true,
-		//},
+		{
+			name:      "Test select unit A shared with unit B",
+			condition: MustGetConditionFromFile("unit-A-or-B-test-condition.json"),
+			document:  MustGetDocumentFromFile("unit-A-shared-B-document.json"),
+			want:      true,
+		},
 		{
 			name:      "test documents with links using in links",
 			condition: MustGetConditionFromFile("condition-1-links.json"),
@@ -152,7 +152,7 @@ func Test(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			c := tt.condition
-			if got := c.Test(tt.document); got != tt.want {
+			if got := c.TestDocument(tt.document); got != tt.want {
 				t.Errorf("Test() = %v, want %v", got, tt.want)
 			}
 		})

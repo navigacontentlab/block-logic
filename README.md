@@ -17,7 +17,7 @@ You have a document with the following links:
 }
 ```
 
-When following for example the event- or contentlog, you need to get the document in json from CCA and select it if the channel above exists. This library makes it possible to configure a condition like this:
+When following the event- or contentlog, you need to get the document in json from CCA and select it if the channel above exists. This library makes it possible to configure a condition like this:
 
 ```
 {
@@ -43,3 +43,50 @@ The condition struct with and or condition:
 
 ```
 
+Example of a more complex condition: 
+```
+{
+  "in": "links",
+  "or": [
+    {
+      "rel": "creator",
+      "and": [
+        {
+          "in": "links",
+          "rel": "affiliation",
+          "and": [
+            {
+              "in": "links",
+              "or": [
+                {
+                  "uri": "imid://unit/A"
+                },
+                {
+                  "uri": "imid://unit/B"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rel": "shared-with",
+      "and": [
+        {
+          "in": "links",
+          "or": [
+            {
+              "uri": "imid://unit/A"
+            },
+            {
+              "uri": "imid://unit/B"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+Document must have either unit A OR unit B also shared with unit A or B

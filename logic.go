@@ -15,7 +15,7 @@ type Condition struct {
 	URI   string      `json:"uri,omitempty"`
 }
 
-func (c Condition) Test(document doc.Document) bool {
+func (c Condition) TestDocument(document doc.Document) bool {
 	blocks := []doc.Block{}
 
 	switch c.In {
@@ -31,6 +31,31 @@ func (c Condition) Test(document doc.Document) bool {
 		blocks = append(blocks, document.Content...)
 	}
 
+	return c.testBlocks(true, blocks)
+}
+
+func (c Condition) testBlocks(toplevel bool, blocks []doc.Block) bool {
+	if !toplevel && c.In != "" {
+		childBlocks := []doc.Block{}
+
+		for _, block := range blocks {
+			switch c.In {
+			case "links":
+				childBlocks = append(childBlocks, block.Links...)
+			case "meta":
+				childBlocks = append(childBlocks, block.Meta...)
+			case "content":
+				childBlocks = append(childBlocks, block.Content...)
+			case "*":
+				childBlocks = append(childBlocks, block.Links...)
+				childBlocks = append(childBlocks, block.Meta...)
+				childBlocks = append(childBlocks, block.Content...)
+			}
+		}
+
+		return c.test(childBlocks)
+	}
+
 	return c.test(blocks)
 }
 
@@ -40,6 +65,7 @@ func (c Condition) test(blocks []doc.Block) bool {
 	for _, block := range blocks {
 		if matchBlock(c, block) {
 			hasMatch = true
+
 			break
 		}
 	}
@@ -61,7 +87,7 @@ func (c Condition) test(blocks []doc.Block) bool {
 
 func (c Condition) testOr(blocks []doc.Block) bool {
 	for _, pattern := range c.Or {
-		if pattern.test(blocks) {
+		if pattern.testBlocks(false, blocks) {
 			return true
 		}
 	}
@@ -71,7 +97,7 @@ func (c Condition) testOr(blocks []doc.Block) bool {
 
 func (c Condition) testAnd(blocks []doc.Block) bool {
 	for _, pattern := range c.And {
-		if !pattern.test(blocks) {
+		if !pattern.testBlocks(false, blocks) {
 			return false
 		}
 	}
